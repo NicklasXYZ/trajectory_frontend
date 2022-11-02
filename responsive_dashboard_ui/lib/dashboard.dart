@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_dashboard_ui/components/bar_chart_component.dart';
 import 'package:responsive_dashboard_ui/components/history_table.dart';
+import 'package:responsive_dashboard_ui/components/list.dart';
 import 'package:responsive_dashboard_ui/config/responsive.dart';
 import 'package:responsive_dashboard_ui/config/size_config.dart';
 import 'package:responsive_dashboard_ui/style/colors.dart';
@@ -180,6 +181,7 @@ class Dashboard extends StatelessWidget {
                     child: Column(
                       children: const [
                         // AppBarActionItem(),
+                        // ListTileSelectExample(),
                         PaymentsDetailList(),
                       ],
                     ),
