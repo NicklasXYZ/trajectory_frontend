@@ -15,24 +15,24 @@ class PaymentsDetailList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // SizedBox(
+        //   height: SizeConfig.blockSizeVertical! * 5,
+        // ),
+        // Container(
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.circular(30),
+        //     boxShadow: const [
+        //       BoxShadow(
+        //         offset: Offset(10, 15),
+        //         blurRadius: 15,
+        //         color: AppColors.iconGray,
+        //       ),
+        //     ],
+        //   ),
+        //   child: Image.asset('assets/card.png'),
+        // ),
         SizedBox(
-          height: SizeConfig.blockSizeVertical! * 5,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(10, 15),
-                blurRadius: 15,
-                color: AppColors.iconGray,
-              ),
-            ],
-          ),
-          child: Image.asset('assets/card.png'),
-        ),
-        SizedBox(
-          height: SizeConfig.blockSizeVertical! * 5,
+          height: SizeConfig.blockSizeVertical! * 7.5,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,9 +56,9 @@ class PaymentsDetailList extends StatelessWidget {
         Column(
           children: List.generate(
             recentActivities.length,
-            (index) =>  PaymentListTile(
+            (index) => PaymentListTile(
               icon: recentActivities[index]["icon"],
-              amount:recentActivities[index]["amount"],
+              amount: recentActivities[index]["amount"],
               label: recentActivities[index]["label"],
             ),
           ),
@@ -88,9 +88,9 @@ class PaymentsDetailList extends StatelessWidget {
         Column(
           children: List.generate(
             upcomingPayments.length,
-            (index) =>  PaymentListTile(
+            (index) => PaymentListTile(
               icon: upcomingPayments[index]["icon"],
-              amount:upcomingPayments[index]["amount"],
+              amount: upcomingPayments[index]["amount"],
               label: upcomingPayments[index]["label"],
             ),
           ),

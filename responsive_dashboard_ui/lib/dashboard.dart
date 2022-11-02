@@ -179,7 +179,7 @@ class Dashboard extends StatelessWidget {
                     padding: const EdgeInsets.all(30),
                     child: Column(
                       children: const [
-                        AppBarActionItem(),
+                        // AppBarActionItem(),
                         PaymentsDetailList(),
                       ],
                     ),
