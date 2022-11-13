@@ -7,8 +7,11 @@ import 'package:responsive_dashboard_ui/style/colors.dart';
 import 'package:responsive_dashboard_ui/config/size_config.dart';
 import 'package:responsive_dashboard_ui/config/responsive.dart';
 
+import 'package:responsive_dashboard_ui/pages/zoombuttons_plugin_option.dart';
+import 'package:positioned_tap_detector_2/positioned_tap_detector_2.dart';
+
 class PolylinePage extends StatefulWidget {
-  static const String route = 'polyline';
+  static const String route = '/polyline';
 
   const PolylinePage({Key? key}) : super(key: key);
 
@@ -17,6 +20,12 @@ class PolylinePage extends StatefulWidget {
 }
 
 class _PolylinePageState extends State<PolylinePage> {
+  List<LatLng> tappedPoints = [
+    LatLng(55.5, -0.09),
+    LatLng(54.3498, -6.2603),
+    LatLng(52.8566, 2.3522),
+  ];
+
   late Future<List<Polyline>> polylines;
 
   Future<List<Polyline>> getPolylines() async {
@@ -54,6 +63,15 @@ class _PolylinePageState extends State<PolylinePage> {
       LatLng(54.3498, -6.2603),
       LatLng(52.8566, 2.3522),
     ];
+
+    final markers = tappedPoints.map((latlng) {
+      return Marker(
+        width: 180,
+        height: 180,
+        point: latlng,
+        builder: (ctx) => const FlutterLogo(),
+      );
+    }).toList();
 
 //     return Row(
 //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -139,10 +157,12 @@ class _PolylinePageState extends State<PolylinePage> {
                           options: MapOptions(
                             center: LatLng(51.5, -0.09),
                             zoom: 5,
+                            // onTap: _handleTap,
                             onTap: (tapPosition, point) {
                               setState(() {
                                 debugPrint('onTap');
                                 polylines = getPolylines();
+                                // tappedPoints
                               });
                             },
                           ),
@@ -178,6 +198,14 @@ class _PolylinePageState extends State<PolylinePage> {
                               polylines: snapshot.data!,
                               polylineCulling: true,
                             ),
+                            const FlutterMapZoomButtons(
+                              minZoom: 4,
+                              maxZoom: 19,
+                              mini: true,
+                              padding: 10,
+                              alignment: Alignment.bottomLeft,
+                            ),
+                            MarkerLayer(markers: markers),
                           ],
                         ),
                       ),
